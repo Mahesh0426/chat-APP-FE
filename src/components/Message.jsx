@@ -1,7 +1,9 @@
 import React from "react";
 
 const Message = () => {
-  return <div>Message</div>;
+  return (
+    <div className="bg-gray-100 h-full"> this is message Message section </div>
+  );
 };
 
 export default Message;
