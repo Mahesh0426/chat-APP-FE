@@ -1,0 +1,14 @@
+.scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Tailwind’s bg-slate-100 is #f1f5f9 by default */
+.scrollbar::-webkit-scrollbar-track {
+  background-color: #f1f5f9;
+}
+
+/* Tailwind’s bg-slate-200 is #e2e8f0, and rounded-full = 9999px radius */
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: #e2e8f0;
+  border-radius: 9999px;
+}

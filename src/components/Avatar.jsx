@@ -8,10 +8,9 @@ const Avatar = ({ userId, name, imageUrl, width, height }) => {
     const splitName = name?.split(" ");
 
     if (splitName.length > 1) {
-      avatarName =
-        splitName[0][0].toUpperCase() + splitName[1][0].toUpperCase();
+      avatarName = splitName[0][0] + splitName[1][0];
     } else {
-      avatarName = splitName[0][0].toUpperCase();
+      avatarName = splitName[0][0];
     }
   }
 

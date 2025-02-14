@@ -55,3 +55,32 @@ export const getUserDetails = async () => {
     throw error;
   }
 };
+
+//update user details
+export const updateUserDetails = async (payload) => {
+  try {
+    const res = await axios.put(`${URL}/update-user`, payload, {
+      withCredentials: true,
+    });
+
+    return res.data;
+  } catch (error) {
+    console.error(error.response?.data || error.message);
+    throw error;
+  }
+};
+
+//search user details
+export const searchUserDetails = async (searchTerm) => {
+  try {
+    const res = await axios.post(`${URL}/search-user`, {
+      searchTerm,
+      withCredentials: true,
+    });
+
+    return res.data;
+  } catch (error) {
+    console.error(error.response?.data || error.message);
+    throw error;
+  }
+};
