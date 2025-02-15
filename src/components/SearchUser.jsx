@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { IoSearchOutline } from "react-icons/io5";
+import { IoClose, IoSearchOutline } from "react-icons/io5";
 import LoadingSpinner from "../helper/LoadingSpinner";
 import UserSearchCard from "./UserSearchCard";
 import { searchUserDetails } from "../axios/userAxios";
@@ -15,8 +15,8 @@ const SearchUser = ({ onClose }) => {
       setLoading(true);
       // Make API call to search user details
       const response = await searchUserDetails(search);
-
       console.log("response", response);
+
       setLoading(false);
       setSearchUser(response.data);
     } catch (error) {
@@ -24,17 +24,14 @@ const SearchUser = ({ onClose }) => {
     }
   };
 
-  //ues effect when component mounts
+  //Triggers the handleSearchUser function whenever the search term changes.
   useEffect(() => {
     handleSearchUser();
   }, [search]);
 
-  console.log("search", search);
-  console.log("searchUser", searchUser);
-
   return (
-    <div className="fixed top-0 bottom-0 left-110 right-0">
-      <div className="w-full max-w-md ma-auto mt-10">
+    <div className="fixed top-0 bottom-0 left-0 right-0">
+      <div className="w-full max-w-sm ml-12 md:mx-auto mt-10">
         {/* input search user */}
         <div className="bg-white rounded h-14 overflow-hidden flex ">
           <input
@@ -57,9 +54,9 @@ const SearchUser = ({ onClose }) => {
           )}
 
           {loading && (
-            <p>
+            <div>
               <LoadingSpinner />
-            </p>
+            </div>
           )}
 
           {searchUser.length !== 0 &&
@@ -70,6 +67,14 @@ const SearchUser = ({ onClose }) => {
               );
             })}
         </div>
+      </div>
+      <div
+        className="absolute top-0 right-0 text-2xl p-2 lg:text-4xl hover:text-white"
+        onClick={onClose}
+      >
+        <button>
+          <IoClose />
+        </button>
       </div>
     </div>
   );

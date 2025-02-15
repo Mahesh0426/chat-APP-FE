@@ -71,12 +71,16 @@ export const updateUserDetails = async (payload) => {
 };
 
 //search user details
-export const searchUserDetails = async (searchTerm) => {
+export const searchUserDetails = async (search) => {
   try {
-    const res = await axios.post(`${URL}/search-user`, {
-      searchTerm,
-      withCredentials: true,
-    });
+    const res = await axios.post(
+      `${URL}/search-user`,
+      { search: search },
+      {
+        withCredentials: true,
+      }
+    );
+    console.log("res", res);
 
     return res.data;
   } catch (error) {

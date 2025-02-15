@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SlLogout } from "react-icons/sl";
 import { FaUserPlus } from "react-icons/fa";
 import { IoChatbubbleEllipses } from "react-icons/io5";
@@ -13,10 +13,11 @@ const Sidebar = () => {
   const user = useSelector((state) => state?.user);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [allUser, setAllUser] = useState([]);
-  const [openSearchUser, setOpenSearchUser] = useState(true);
+  const [openSearchUser, setOpenSearchUser] = useState(false);
 
   return (
-    <div className="w-full h-full grid grid-cols-[48px_1fr] bg-white">
+    <div className="w-full `h-full grid grid-cols-[48px_1fr] bg-white">
+      {/* sidebar | icons */}
       <div className="bg-slate-100 w-12 h-full rounded-tr-lg rounded-br-lg py-5 text-slate-600 flex flex-col justify-between">
         {/* chat icon */}
         <div>
@@ -42,11 +43,14 @@ const Sidebar = () => {
           </div>
         </div>
         {/* profile button */}
-        <div>
+        <div className="flex flex-col items-center">
           <button
+            style={{ zIndex: 1000 }}
             className="mx-auto"
             title={user?.name}
-            onClick={() => setIsOpenModal(true)}
+            onClick={() => {
+              setIsOpenModal(true);
+            }}
           >
             <Avatar
               width={45}
@@ -60,7 +64,7 @@ const Sidebar = () => {
           <button
             title="logout"
             className="w-12 h-12 flex justify-center items-center cursor-pointer hover:bg-slate-200 rounded"
-            //   onClick={handleLogout}
+            // onClick={alert("logout")}
           >
             <span className="mr-4">
               <SlLogout size={25} />
