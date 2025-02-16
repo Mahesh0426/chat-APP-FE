@@ -2,14 +2,23 @@ import React, { useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { getUserDetails } from "../../axios/userAxios";
 import { useDispatch, useSelector } from "react-redux";
-import { logout, setUser } from "../../redux/userSlice";
+import {
+  logout,
+  setOnlineUser,
+  setSocketConnection,
+  setUser,
+} from "../../redux/userSlice";
 import Sidebar from "../../components/Sidebar";
 import Logo from "../../assets/chatLogo.png";
+import { io } from "socket.io-client";
 
 const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
+
+  const user = useSelector((state) => state.user);
+  // console.log(user);
 
   // use effect to get user details
   useEffect(() => {
@@ -30,6 +39,26 @@ const Home = () => {
       }
     };
     fetchtUserDetails();
+  }, []);
+
+  //socket connection
+  useEffect(() => {
+    const socketConnection = io(import.meta.env.VITE_APP_API_BASE_URL, {
+      auth: {
+        token: localStorage.getItem("token"),
+      },
+    });
+
+    socketConnection.on("onlineUser", (data) => {
+      // console.log("Received message:", data);
+      dispatch(setOnlineUser(data));
+    });
+
+    dispatch(setSocketConnection(socketConnection));
+
+    return () => {
+      socketConnection.disconnect();
+    };
   }, []);
 
   const basePath = location.pathname === "/";

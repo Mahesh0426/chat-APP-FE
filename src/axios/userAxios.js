@@ -80,7 +80,7 @@ export const searchUserDetails = async (search) => {
         withCredentials: true,
       }
     );
-    console.log("res", res);
+    // console.log("res", res);
 
     return res.data;
   } catch (error) {
