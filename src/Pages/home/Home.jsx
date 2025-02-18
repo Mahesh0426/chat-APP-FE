@@ -26,7 +26,7 @@ const Home = () => {
       try {
         const response = await getUserDetails();
         dispatch(setUser(response.data));
-        console.log(response);
+        console.log("response", response);
 
         // if user logout then navigate to email page
         if (response.data.logout) {

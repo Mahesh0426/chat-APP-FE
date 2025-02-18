@@ -5,10 +5,18 @@ export const store = configureStore({
   reducer: {
     user: userReducer,
   },
-
-  // Disable serializability checks
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: false,
+      serializableCheck: {
+        // Ignore specific actions or paths in your state here
+        ignoredActions: ["user/setSocketConnection"],
+        // Optionally, you can also ignore specific paths in the state
+        ignoredPaths: ["user.socketConnection"],
+      },
     }),
+
+  // middleware: (getDefaultMiddleware) =>
+  //   getDefaultMiddleware({
+  //     serializableCheck: false,
+  //   }),
 });
