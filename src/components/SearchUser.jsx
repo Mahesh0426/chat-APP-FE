@@ -30,27 +30,28 @@ const SearchUser = ({ onClose }) => {
   }, [search]);
 
   return (
-    <div className="fixed top-0 bottom-0 left-0 right-0">
-      <div className="w-full max-w-sm ml-12 md:mx-auto mt-10">
+    <div className="fixed top-7 bottom-0 left-0 right-0 z-10 flex flex-col items-center">
+      <div className="w-full max-w-sm relative mx-auto mt-10">
         {/* input search user */}
-        <div className="bg-white rounded h-14 overflow-hidden flex ">
+        <div className="bg-white rounded h-14 overflow-hidden flex relative">
           <input
             type="text"
-            placeholder="Search user by name, email...."
-            className="w-full outline-none py-1 h-full px-4"
+            placeholder="Search user by name, email..."
+            className="w-full outline-none py-1 h-full px-4 pr-14"
             onChange={(e) => setSearch(e.target.value)}
             value={search}
           />
-          <div className="h-14 w-14 flex justify-center items-center">
+          {/* Search Icon */}
+          <div className="h-14 w-14 flex justify-center items-center absolute right-0 top-0">
             <IoSearchOutline size={25} />
           </div>
         </div>
 
-        {/**display search user */}
+        {/** display search user */}
         <div className="bg-white mt-2 w-full p-4 rounded">
-          {/**no user found */}
+          {/** no user found */}
           {searchUser.length === 0 && !loading && (
-            <p className="text-center text-slate-500">no user found!</p>
+            <p className="text-center text-slate-500">No user found!</p>
           )}
 
           {loading && (
@@ -67,14 +68,16 @@ const SearchUser = ({ onClose }) => {
               );
             })}
         </div>
-      </div>
-      <div
-        className="absolute top-0 right-0 text-2xl p-2 lg:text-4xl hover:text-white"
-        onClick={onClose}
-      >
-        <button>
-          <IoClose />
-        </button>
+
+        {/* Close Button (Fixed Properly) */}
+        <div
+          className="absolute -top-10 right-2 text-2xl p-2 lg:text-4xl hover:text-red-500"
+          onClick={onClose}
+        >
+          <button>
+            <IoClose />
+          </button>
+        </div>
       </div>
     </div>
   );
