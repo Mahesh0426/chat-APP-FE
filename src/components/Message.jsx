@@ -148,6 +148,9 @@ const Message = () => {
       const emitMessagePage = () => {
         socketConnection.emit("message-page", params.userId);
 
+        // listen to seen event
+        socketConnection.emit("seen", params.userId);
+
         // listen to message-user event
         socketConnection.on("message-user", (data) => {
           // console.log("message-user", data);
@@ -223,46 +226,64 @@ const Message = () => {
           {allMessage.map((msg, index) => (
             <div
               key={index}
-              className={`p-1 mt-2 rounded-lg w-fit max-w-[75%] text-white ${
+              className={`p-2 mt-2 rounded-lg w-fit max-w-[75%] text-white flex flex-col gap-1 ${
                 user._id === msg.msgByUserId
-                  ? "ml-auto bg-blue-600"
-                  : "bg-gray-800"
+                  ? "ml-auto bg-blue-600 "
+                  : "bg-gray-800 "
               }`}
             >
+              {/* Image Preview */}
+              {msg?.imageUrl && (
+                <div className="mt-1 max-w-xs max-h-60 overflow-hidden rounded">
+                  <img
+                    src={msg.imageUrl}
+                    alt="preview"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              )}
+
+              {/* Video Preview */}
+              {msg?.videoUrl && (
+                <div className="mt-1 max-w-xs max-h-60 overflow-hidden rounded">
+                  <video
+                    src={msg.videoUrl}
+                    className="w-full h-full object-contain"
+                    controls
+                  />
+                </div>
+              )}
               {/* Message Text & Timestamp in one line */}
               <div className="flex flex-col gap-1">
                 <p className="px-2 text-sm flex items-center gap-2">
                   {msg.text}
-                  <span className="text-xs opacity-70 self-end mt-0.5">
+                  <span className="text-xs opacity-70 self-end mt-0.5 ml-auto">
                     {moment(msg.createdAt).format("hh:mm A")}
                   </span>
                 </p>
-
-                {/* Image Preview */}
-                {msg?.imageUrl && (
-                  <div className="mt-1 max-w-xs max-h-60 overflow-hidden rounded">
-                    <img
-                      src={msg.imageUrl}
-                      alt="preview"
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                )}
-
-                {/* Video Preview */}
-                {msg?.videoUrl && (
-                  <div className="mt-1 max-w-xs max-h-60 overflow-hidden rounded">
-                    <video
-                      src={msg.videoUrl}
-                      className="w-full h-full object-contain"
-                      controls
-                    />
-                  </div>
-                )}
               </div>
             </div>
           ))}
         </div>
+
+        {/**upload Image display */}
+        {message.imageUrl && (
+          <div className="w-full h-full sticky bottom-0 bg-slate-700 bg-opacity-30 flex justify-center items-center rounded overflow-hidden">
+            <div
+              className="w-fit p-2 absolute top-0 right-0 cursor-pointer hover:text-red-600"
+              onClick={handleClearUploadImage}
+            >
+              <IoClose size={30} />
+            </div>
+            <div className="bg-white p-3">
+              <img
+                src={message.imageUrl}
+                alt="uploadImage"
+                className="aspect-square w-full h-full max-w-sm m-2 object-scale-down"
+              />
+            </div>
+          </div>
+        )}
 
         {/**upload video display */}
         {message.videoUrl && (

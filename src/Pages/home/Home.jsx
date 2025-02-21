@@ -26,7 +26,7 @@ const Home = () => {
       try {
         const response = await getUserDetails();
         dispatch(setUser(response.data));
-        console.log("response", response);
+        // console.log("response", response);
 
         // if user logout then navigate to email page
         if (response.data.logout) {
@@ -74,11 +74,11 @@ const Home = () => {
         <Outlet />
       </section>
       <div
-        className={`justify-center items-center flex-col gap-2 hidden ${
+        className={`justify-center items-center flex-col gap-2 hidden  ${
           !basePath ? "hidden" : "lg:flex"
         }`}
       >
-        <div className=" flex items-center">
+        <div className=" flex items-center ">
           <img src={Logo} width={200} alt="logo" />
           <p className="ml-3 text-amber-400  text-4xl font-bold">kuraX App</p>
         </div>
