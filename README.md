@@ -64,8 +64,7 @@ MongoDB: NoSQL database for storing user information and chat data.
 
    ```bash
 https://github.com/Mahesh0426/chat-APP-FE.git
-   cd not-to-do-list-app
-   
+
 2. **Install Dependencies**
     - yarn add
 Run the App
