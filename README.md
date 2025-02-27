@@ -36,33 +36,19 @@ MongoDB: NoSQL database for storing user information and chat data.
 
 - Typing indicators for active conversations.
 
-- Message notifications for new messages.
-
-- User Authentication
-
-- Secure user registration and login.
-
 - JWT-based authentication for protected routes.
-
-- Group Chat Management
 
 - Create and manage group chats.
 
 - Add or remove users from groups.
 
-- User Profile
-
 - Customize user profiles with avatars and status messages.
 
 - View online/offline status of users.
 
-- Message History
-
 - Store and retrieve chat history.
 
 - Search functionality within conversations.
-
-- Responsive Design
 
 - Mobile-friendly interface using Tailwind CSS.
 
@@ -81,11 +67,11 @@ yarn install
 Set Up Environment Variables
 Create a .env file in the root directory and add necessary variables:
 
-text
 MONGODB_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
 Run the Application
 ```
-``bash
+
+````bash
 yarn dev
-```
+````
