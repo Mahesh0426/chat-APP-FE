@@ -54,24 +54,24 @@ MongoDB: NoSQL database for storing user information and chat data.
 
 - Consistent experience across various devices.
 
+
+
+
+
 ## Installation
-Clone the Repository
 
-```bash
-git clone https://github.com/Mahesh0426/chat-APP-FE
-cd Chat_App
-Install Dependencies
-```
-```bash
-yarn install
-Set Up Environment Variables
-Create a .env file in the root directory and add necessary variables:
+1. **Clone the Repository**
 
-MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-Run the Application
-```
+   ```bash
+https://github.com/Mahesh0426/chat-APP-FE.git
+   cd not-to-do-list-app
+   
+2. **Install Dependencies**
+    - yarn add
+Run the App
 
-````bash
-yarn dev
-````
+3. **Start app**
+   - yard dev
+
+
+
