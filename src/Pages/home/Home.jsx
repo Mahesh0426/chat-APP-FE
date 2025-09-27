@@ -17,9 +17,6 @@ const Home = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const user = useSelector((state) => state.user);
-  // console.log(user);
-
   // use effect to get user details
   useEffect(() => {
     const fetchtUserDetails = async () => {

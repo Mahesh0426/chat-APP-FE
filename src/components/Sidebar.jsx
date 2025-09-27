@@ -64,7 +64,7 @@ const Sidebar = () => {
   return (
     <div className="w-full h-full grid grid-cols-[48px_1fr] bg-gray-800">
       {/* sidebar | icons */}
-      <div className="bg-gray-800 w-12 h-full rounded-tr-lg rounded-br-lg py-5 text-gray-400 flex flex-col justify-between">
+      <div className="bg-gray-800 w-12 h-full   py-5 text-gray-400 flex flex-col justify-between ">
         {/* chat icon */}
         <div>
           {/* chat */}

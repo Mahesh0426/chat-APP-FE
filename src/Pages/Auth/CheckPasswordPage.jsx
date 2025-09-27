@@ -103,6 +103,8 @@ const CheckPasswordPage = () => {
           {isLoading ? <LoadingSpinner /> : "login"}
         </button>
       </form>
+      <br />
+      <p>password:1234</p>
 
       <p className="my-3 text-center">
         <Link

@@ -1,4 +1,3 @@
-import React from "react";
 import { IoMailOutline } from "react-icons/io5";
 import { PiUserCircle } from "react-icons/pi";
 import { Link, useNavigate } from "react-router-dom";
@@ -63,6 +62,13 @@ const CheckEmailPage = () => {
             onChange={handleOnChange}
           />
         </div>
+        <p>Email 1 : bishal@gmail.com</p>
+
+        <p>password : 1234</p>
+
+        <p>Email 2 : rameshbhatt@gmail.com</p>
+
+        <p>password : 1234</p>
 
         {/* Submit button */}
         <button
