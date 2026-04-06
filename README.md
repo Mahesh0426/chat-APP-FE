@@ -33,10 +33,12 @@ https://github.com/Mahesh0426/chatApp-BE
 ## Core Features & Components
 
 ### Authentication
+
 - User login and registration forms
 - Secure token handling and protected route wrappers
 
 ### Main Interface
+
 - **Sidebar**: Displays active conversations, online users, and unread message indicators
 - **Message Area**: Real-time display of text, image, and video messages
 - **User Profile**: Inline editing for user details and avatar updates
@@ -51,6 +53,11 @@ https://github.com/Mahesh0426/chatApp-BE
 ## Getting Started
 
 1. Clone the repository
+
+```sh
+git clone https://github.com/Mahesh0426/chat-APP-FE.git
+```
+
 2. Install dependencies:
 
 ```sh
