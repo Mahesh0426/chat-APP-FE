@@ -1,0 +1,16 @@
+services:
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VITE_APP_API_BASE_URL: ${VITE_APP_API_BASE_URL}
+        VITE_WEB3FORM_ACCESS_KEY: ${VITE_WEB3FORM_ACCESS_KEY}
+        VITE_CLOUDINARY_CLOUD_NAME: ${VITE_CLOUDINARY_CLOUD_NAME}
+    container_name: chatapp-client
+    image: chatapp-client:latest
+    restart: unless-stopped
+    ports:
+      - "5175:80"
+    env_file:
+      - .env

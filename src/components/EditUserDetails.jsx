@@ -29,7 +29,8 @@ const EditUserDetails = ({ onClose, user }) => {
     if (user) {
       setFormData((prev) => ({
         ...prev,
-        ...user,
+        name: user?.user || user?.name || prev.name,
+        profile_pic: user?.profile_pic || prev.profile_pic,
       }));
     }
   }, [user, setFormData]);
@@ -65,7 +66,8 @@ const EditUserDetails = ({ onClose, user }) => {
     e.preventDefault();
 
     try {
-      const response = await updateUserDetails(formData);
+      const { name, profile_pic } = formData;
+      const response = await updateUserDetails({ name, profile_pic });
 
       if (response?.status === "error") {
         toast.error(response?.message || "Cannot update user details");

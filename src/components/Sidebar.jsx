@@ -19,7 +19,7 @@ const Sidebar = () => {
   const [openSearchUser, setOpenSearchUser] = useState(false);
 
   const socketConnection = useSelector(
-    (state) => state?.user?.socketConnection
+    (state) => state?.user?.socketConnection,
   );
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -99,8 +99,8 @@ const Sidebar = () => {
             }}
           >
             <Avatar
-              width={45}
-              height={45}
+              width={30}
+              height={30}
               name={user?.name}
               imageUrl={user?.profile_pic}
               userId={user?._id}
